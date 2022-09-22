@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: product
-          image: kruuux/product:1.0.2
+          image: kruuux/product:1.0.3
           volumeMounts:
             - mountPath: /product/data
               name: product-volume
