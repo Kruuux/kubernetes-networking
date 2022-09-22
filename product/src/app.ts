@@ -51,6 +51,10 @@ app.post("/api/products", (request: Request, response: Response) => {
     });
 });
 
+app.get("/api/error", () => {
+  process.exit(1);
+});
+
 app.listen(port, () => {
   console.log(`Product service listening on port ${port}`);
 });
