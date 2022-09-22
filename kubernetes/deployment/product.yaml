@@ -16,7 +16,7 @@ spec:
         - name: product
           image: kruuux/product:1.0.2
           volumeMounts:
-            - mountPath: /authentication/src
+            - mountPath: /product/data
               name: product-volume
           command: ["npm", "run", "start:prod"]
           env: 
