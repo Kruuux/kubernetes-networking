@@ -42,9 +42,11 @@ app.post("/api/products", (request: Request, response: Response) => {
         .json({ status: 201, message: "Product added successfully" });
     })
     .catch((error) => {
-      return response.status(error.response.status).json({
-        status: error.response.status,
-        message: error.response.statusText,
+      console.log(error);
+
+      return response.status(500).json({
+        status: 500,
+        message: "Something went wrong",
       });
     });
 });
