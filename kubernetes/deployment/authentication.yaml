@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authentication
+  template:
+    metadata:
+      labels:
+        app: authentication
+    spec:
+      containers:
+        - name: authentication
+          image: kruuux/authentication:1.0.0
+          command: ["npm", "run", "start:prod"]
+          env: 
+           - name: AUTHENTICATION_SERVICE_PORT
+             value: "3000"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
