@@ -10,7 +10,7 @@ const port = process.env.PRODUCT_SERVICE_PORT;
 app.use(express.json());
 
 app.get("/api/products", (request: Request, response: Response) => {
-  const url = path.join(__dirname, "products.json");
+  const url = path.join(__dirname, "..", "data", "products.json");
 
   if (!fs.existsSync(url))
     return response.status(200).json({ status: 200, data: [] });
@@ -27,7 +27,7 @@ app.post("/api/products", (request: Request, response: Response) => {
       },
     })
     .then(() => {
-      const url = path.join(__dirname, "products.json");
+      const url = path.join(__dirname, "..", "data", "products.json");
       if (!fs.existsSync(url)) fs.writeFileSync(url, JSON.stringify([]));
 
       const products = JSON.parse(fs.readFileSync(url, "utf8"));
