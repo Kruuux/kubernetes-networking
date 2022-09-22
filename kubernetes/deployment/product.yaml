@@ -15,6 +15,9 @@ spec:
       containers:
         - name: product
           image: kruuux/product:1.0.1
+          volumeMounts:
+            - mountPath: /authentication/src
+              name: product-volume
           command: ["npm", "run", "start:prod"]
           env: 
             - name: PRODUCT_SERVICE_PORT
@@ -28,3 +31,7 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+      volumes:
+        - name: product-volume
+          emptyDir: {}
+            
